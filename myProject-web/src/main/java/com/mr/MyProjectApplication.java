@@ -15,7 +15,6 @@ import java.time.Instant;
 /**
  * 启动程序
  *
- * @author ruoyi
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @MapperScan("com.mr.mapper")
