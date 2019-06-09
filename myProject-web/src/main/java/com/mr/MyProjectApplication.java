@@ -1,5 +1,6 @@
 package com.mr;
 
+import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,7 +18,7 @@ import java.time.Instant;
  * @author ruoyi
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
-@MapperScan("com.ruoyi.*.mapper")
+@MapperScan("com.mr.mapper")
 public class MyProjectApplication {
 
     private static final Logger log = LoggerFactory.getLogger(MyProjectApplication.class);
@@ -25,8 +26,8 @@ public class MyProjectApplication {
     public static void main(String[] args) {
         Instant inst1 = Instant.now();
         SpringApplication.run(MyProjectApplication.class, args);
-        log.info(":: 若依管理系统Java开发平台  :: 基于 Spring Boot {} ::", SpringBootVersion.getVersion());
-        log.info(":: 启动成功!耗时:{}秒 ::", Duration.between(inst1, Instant.now()).getSeconds());
+        log.info("基于 Spring Boot {} ", SpringBootVersion.getVersion());
+        log.info("启动成功!耗时:{}秒 ", Duration.between(inst1, Instant.now()).getSeconds());
     }
 
 }
