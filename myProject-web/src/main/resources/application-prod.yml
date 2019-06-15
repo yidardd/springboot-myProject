@@ -1,9 +1,7 @@
-# 生产环境配置
+# 开发环境配置
 server:
   # 服务端口
-  port: 8080
-  #演示模式
-  demoMode: true
+  port: 80
 
 spring:
   datasource:
@@ -34,9 +32,8 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     # 合并多个DruidDataSource的监控数据
     #useGlobalDataSourceStat: true
-
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-  mapper-locations: mybatis/**/*Mapper.xml
-  typeAliasesPackage: com.bootdo.**.domain
+  mapper-locations: mapper/**/*Mapper.xml
+  typeAliasesPackage: com.mr.pojo
