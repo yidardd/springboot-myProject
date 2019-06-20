@@ -24,8 +24,9 @@ public class MyPermissionAspect {
 
         Object target = joinPoint.getTarget();
         String methodName = joinPoint.getSignature().getName();
-        Class<?>[] parameterTypes = ((MethodSignature) joinPoint.getSignature()).getMethod().getParameterTypes();
-        Method method = target.getClass().getMethod(methodName, parameterTypes);
+        Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
+//        Class<?>[] parameterTypes = ((MethodSignature) joinPoint.getSignature()).getMethod().getParameterTypes();
+//        Method method = target.getClass().getMethod(methodName, parameterTypes);
         MyPermission methodAnnotation = method.getAnnotation(MyPermission.class);
         if (methodAnnotation != null) {
             MyPermission.Role methodPer = methodAnnotation.needRole();
