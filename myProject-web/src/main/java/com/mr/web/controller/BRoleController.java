@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 public class BRoleController {
 
     @RequestMapping(value = "/bCan", method = RequestMethod.GET)
-    @MyPermission(needRole = MyPermission.Role.B )
+//    @MyPermission(needRole = MyPermission.Role.B )
     public ResponseObject getUserId(HttpServletRequest request) {
         ResponseObject responseObject = new ResponseObject();
         responseObject.success("ok");

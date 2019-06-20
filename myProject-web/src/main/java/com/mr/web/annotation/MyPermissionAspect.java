@@ -22,25 +22,30 @@ public class MyPermissionAspect {
     @Before("logPointCut()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
 
+        Object target = joinPoint.getTarget();
         String methodName = joinPoint.getSignature().getName();
         Class<?>[] parameterTypes = ((MethodSignature) joinPoint.getSignature()).getMethod().getParameterTypes();
-        Method method = joinPoint.getClass().getMethod(methodName, parameterTypes);
-        MyPermission myPermission = method.getAnnotation(MyPermission.class);
-        MyPermission.Role methodPer = myPermission.needRole();
-        System.err.println("请求的方法上面的注解:" + methodPer);
-        if (methodPer != null) {
+        Method method = target.getClass().getMethod(methodName, parameterTypes);
+        MyPermission methodAnnotation = method.getAnnotation(MyPermission.class);
+        if (methodAnnotation != null) {
+            MyPermission.Role methodPer = methodAnnotation.needRole();
+            System.err.println("请求的方法上面的注解:" + methodPer);
+
+            //从session或者缓存中取出用户的角色信息,进行对比,,如果不符合返回权限不足
+
+        }
+
+
+        MyPermission classAnnotation = target.getClass().getAnnotation(MyPermission.class);
+        if (classAnnotation != null) {
+            MyPermission.Role classPer = classAnnotation.needRole();
+            System.err.println("请求的类上面的注解:" + classPer);
+
+            //从session或者缓存中取出用户的角色信息,进行对比,,如果不符合返回权限不足
 
 
         }
 
-        MyPermission annotation = joinPoint.getClass().getAnnotation(MyPermission.class);
-        MyPermission.Role classPer = annotation.needRole();
-        System.err.println("请求的类上面的注解:" + classPer);
-
-        if (classPer != null) {
-
-
-        }
 
     }
 
