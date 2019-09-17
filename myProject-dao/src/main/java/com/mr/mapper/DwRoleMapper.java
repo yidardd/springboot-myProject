@@ -11,4 +11,8 @@ public interface DwRoleMapper {
     int insert(DwRole record);
 
     DwRole selectByPrimaryKey(Long id);
+
+    void insertSql(String sql);
+
+
 }

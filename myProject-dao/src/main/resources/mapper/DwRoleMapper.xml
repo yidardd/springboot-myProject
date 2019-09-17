@@ -32,4 +32,8 @@
       )
   </insert>
 
+  <insert id="insertSql" parameterType="java.lang.String">
+   #{sql}
+  </insert>
+
 </mapper>

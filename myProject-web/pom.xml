@@ -15,6 +15,11 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!-- spring-boot-devtools -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -54,15 +59,15 @@
                     </execution>
                 </executions>
             </plugin>
-           <!-- <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <warName>${artifactId}</warName>
-                </configuration>
-            </plugin>-->
+            <!-- <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-war-plugin</artifactId>
+                 <version>3.0.0</version>
+                 <configuration>
+                     <failOnMissingWebXml>false</failOnMissingWebXml>
+                     <warName>${artifactId}</warName>
+                 </configuration>
+             </plugin>-->
         </plugins>
         <finalName>${project.artifactId}-${project.version}-${env}</finalName>
         <filters>
