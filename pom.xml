@@ -29,6 +29,9 @@
         <lombok.version>1.18.4</lombok.version>
         <hutool.version>4.4.2</hutool.version>
         <jedis-version>2.9.0</jedis-version>
+        <spring-boot-admin.version>2.2.0-SNAPSHOT</spring-boot-admin.version>
+        <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
+
     </properties>
 
 
@@ -49,7 +52,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.1.5.RELEASE</version>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -132,6 +135,8 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.58</version>
         </dependency>
+
+
 
     </dependencies>
     <profiles>

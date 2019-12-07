@@ -46,6 +46,10 @@ spring:
     multipart:
       max-file-size:  30MB
       max-request-size:  30MB
+  boot:
+    admin:
+      client:
+        url: http://localhost:${server.port}/${server.servlet.context-path}
 
 # PageHelper分页插件
 pagehelper:
@@ -99,3 +103,30 @@ thread:
     keepAliveSeconds: 2000
     maxPoolSize: 100
     corePoolSize: 10
+
+
+
+# 开启和暴露所有端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+    logfile:
+      enabled: true         #可在线查看日志
+
+# 自定义项目信息，Spring Boot Admin展示使用
+info:
+  project-groupId: '@project.groupId@'
+  project-artifactId: '@project.artifactId@'
+  project-name: '@project.name@'
+  project-finalName: '@project.build.finalName@'
+  project-author: ${swagger.contact.name}
+  project-description: '@project.description@'
+  project-sourceEncoding: '@project.build.sourceEncoding@'
+  project-spring-boot-version: '@spring-boot.version@'
+  project-mybatis-plus-version: '@mybatis-plus-boot-starter.version@'
+  project-version: '@project.version@'

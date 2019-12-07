@@ -1,5 +1,6 @@
 package com.mr;
 
+import de.codecentric.boot.admin.server.config.EnableAdminServer;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
@@ -18,6 +19,7 @@ import java.time.Instant;
  */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
 @MapperScan("com.mr.mapper")
+@EnableAdminServer
 public class MyProjectApplication {
 
     private static final Logger log = LoggerFactory.getLogger(MyProjectApplication.class);
