@@ -28,8 +28,9 @@
         <oshi.version>3.9.1</oshi.version>
         <lombok.version>1.18.4</lombok.version>
         <hutool.version>4.4.2</hutool.version>
-        <jedis-version>2.9.0</jedis-version>
-        <spring-boot-admin.version>2.2.0-SNAPSHOT</spring-boot-admin.version>
+       <!-- <jedis-version>2.9.0</jedis-version>-->
+        <jedis-version>3.1.0</jedis-version>
+        <spring-boot-admin.version>2.2.0</spring-boot-admin.version>
         <spring-boot.version>2.2.0.RELEASE</spring-boot.version>
 
     </properties>
@@ -60,7 +61,16 @@
     </dependencyManagement>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j-to-slf4j</artifactId>
+                    <groupId>org.apache.logging.log4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
         <!-- SpringBoot 拦截器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -77,17 +87,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
-        </dependency>
-
-        <!-- SpringWeb模块 -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
         </dependency>
 
         <!--lombok插件-->

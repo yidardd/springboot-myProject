@@ -1,7 +1,4 @@
-# 开发环境配置
-server:
-  # 服务端口
-  port: 80
+
 
 spring:
   datasource:
@@ -37,12 +34,11 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: mapper/**/*Mapper.xml
   typeAliasesPackage: com.mr.pojo
-
 redis:
   task:
     host: 127.0.0.1
     port: 6379
-    pass: 87541092
+    pass:
     db: 2
     config:
 #      超时

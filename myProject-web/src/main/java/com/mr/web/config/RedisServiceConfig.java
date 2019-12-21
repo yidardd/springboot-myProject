@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import redis.clients.jedis.JedisPoolConfig;
 
 @Configuration
 public class RedisServiceConfig {
@@ -45,22 +46,23 @@ public class RedisServiceConfig {
     @Bean
     @Primary
     public RedisConnectionFactory taskConnectionFactory() {
-        JedisConnectionFactory connectionFactory = new JedisConnectionFactory();
+        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+        jedisPoolConfig.setMaxIdle(maxIdle);
+        jedisPoolConfig.setMaxTotal(maxTotal);
+        jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
+        jedisPoolConfig.setMinEvictableIdleTimeMillis(Integer.parseInt(minEvictableIdleTimeMillis));
+        jedisPoolConfig.setNumTestsPerEvictionRun(numTestsPerEvictionRun);
+        jedisPoolConfig.setTimeBetweenEvictionRunsMillis(Integer.parseInt(timeBetweenEvictionRunsMillis));
+        jedisPoolConfig.setTestOnBorrow(testOnBorrow);
+        jedisPoolConfig.setTestWhileIdle(testWhileIdle);
+        JedisConnectionFactory connectionFactory = new JedisConnectionFactory(jedisPoolConfig);
         connectionFactory.setPort(redisPort);
         connectionFactory.setHostName(redisHost);
         connectionFactory.setDatabase(redisDb);
 //        connectionFactory.setPassword(redisPass);
-
         //配置连接池属性
         connectionFactory.setTimeout(Integer.parseInt(timeout));
-        connectionFactory.getPoolConfig().setMaxIdle(maxIdle);
-        connectionFactory.getPoolConfig().setMaxTotal(maxTotal);
-        connectionFactory.getPoolConfig().setMaxWaitMillis(maxWaitMillis);
-        connectionFactory.getPoolConfig().setMinEvictableIdleTimeMillis(Integer.parseInt(minEvictableIdleTimeMillis));
-        connectionFactory.getPoolConfig().setNumTestsPerEvictionRun(numTestsPerEvictionRun);
-        connectionFactory.getPoolConfig().setTimeBetweenEvictionRunsMillis(Integer.parseInt(timeBetweenEvictionRunsMillis));
-        connectionFactory.getPoolConfig().setTestOnBorrow(testOnBorrow);
-        connectionFactory.getPoolConfig().setTestWhileIdle(testWhileIdle);
+
 
         return connectionFactory;
     }
